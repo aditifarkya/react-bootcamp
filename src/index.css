@@ -1,0 +1,7 @@
+#root, #root1{
+    display:flex;
+    justify-content: center;
+}
+.rootele{
+    color:red;
+}
