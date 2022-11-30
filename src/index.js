@@ -5,11 +5,12 @@ import CardComponent from "./components/card-component/index.js";
 import teamdata from "./components/card-component/config";
 
 const CardContainer = () => {
-  // using for loop only prints first object of teamdata array
-  // for (let i = 0; i <= teamData.length; i++) {
+  // using for loop to iterate array of team data objects
+  // let card = [];
+  // for (let i = 0; i < teamdata.length; i++) {
   //   console.log(i);
-  //   console.log(teamData[i]);
-  //   return <CardComponent teamdata={teamData[i]} />;
+  //   console.log(teamdata[i]);
+  //   card.push(<CardComponent teamdata={teamdata[i]} key={teamdata.id} />);
   // }
   const card = teamdata.map((element) => {
     return <CardComponent teamdata={element} key={element.id} />;

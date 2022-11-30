@@ -3,6 +3,7 @@
 import logo from "./team_logo.png";
 import user from "./user.png";
 import "./index.css";
+
 const HeaderComponent = () => {
   return (
     <div className="header_div">
