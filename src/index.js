@@ -1,33 +1,60 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/header-component";
+import CardComponent from "./components/card-component/index.js";
+import teamdata from "./components/card-component/config";
 
-//create functional nested component
-const name = "Third";
-const SecondHeadingComponent = () => {
-  return <h2>Second Heading</h2>;
+const CardContainer = () => {
+  // using for loop to iterate array of team data objects
+  // let card = [];
+  // for (let i = 0; i < teamdata.length; i++) {
+  //   console.log(i);
+  //   console.log(teamdata[i]);
+  //   card.push(<CardComponent teamdata={teamdata[i]} key={teamdata.id} />);
+  // }
+  const card = teamdata.map((element) => {
+    return <CardComponent teamdata={element} key={element.id} />;
+  });
+  return card;
 };
-const HeadingComponent = () => {
+const BodyComponent = () => {
   return (
-    <div className="title">
-      <h1>First Heading</h1>
-      {<SecondHeadingComponent></SecondHeadingComponent>}
-      <h3>{name} Heading</h3>
+    <div className="card__body">
+      <h2 style={{ textAlign: "center" }}>
+        Here's our team. <br></br> Meet our Team Members
+      </h2>
+      <div className="card__containers">
+        <CardContainer />
+      </div>
     </div>
   );
 };
-
 // main component to render header component
-const MainComponent = () => {
+const AppComponent = () => {
   return (
     <>
       <HeaderComponent />
-      <HeadingComponent />
+      <BodyComponent />
     </>
   );
 };
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<MainComponent />);
+root.render(<AppComponent />);
+
+//create functional nested component
+// const name = "Third";
+// const SecondHeadingComponent = () => {
+//   return <h2>Second Heading</h2>;
+// };
+// const HeadingComponent = () => {
+//   return (
+//     <div className="title">
+//       <h1>First Heading</h1>
+//       {<SecondHeadingComponent></SecondHeadingComponent>}
+//       <h3>{name} Heading</h3>
+//     </div>
+//   );
+// };
 
 //create nested element using JSX
 
