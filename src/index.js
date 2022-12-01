@@ -5,7 +5,7 @@ import SearchComponent from "./components/search-component/index";
 import HeaderComponent from "./components/header-component";
 import CardComponent from "./components/card-component/index.js";
 import teamdata from "./components/card-component/config";
-import "./index.css";
+import "./index.scss";
 
 // Team card component (assignment-4) and search functionality (assignment-5)
 
@@ -37,9 +37,11 @@ const CardContainer = ({ searchfiltertext }) => {
       return <CardComponent teamdata={element} key={element.id} />;
     });
   };
-  return searchfiltertext.length !== 0
-    ? searchingresult()
-    : "No search results found";
+  return searchfiltertext.length !== 0 ? (
+    searchingresult()
+  ) : (
+    <h1>No search results found</h1>
+  );
 };
 // main component to render header component
 const AppComponent = () => {

@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 
 const CardComponent = (props) => {
   //   const teamdata = props.teamdata;

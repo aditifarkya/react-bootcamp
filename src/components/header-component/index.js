@@ -2,7 +2,7 @@
 
 import logo from "./team_logo.png";
 import user from "./user.png";
-import "./index.css";
+import "./index.scss";
 
 const HeaderComponent = () => {
   return (
@@ -19,7 +19,7 @@ const HeaderComponent = () => {
           <i className="fa fa-search"></i>
         </button>
       </div> */}
-      <div className="header_img">
+      <div className="header__img">
         <img alt="icon" src={user} className="header__icon" />
       </div>
     </div>
