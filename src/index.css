@@ -18,3 +18,28 @@ body {
   justify-content: center;
   padding: 20px 100px;
 }
+/* search css */
+input[type="text"] {
+  width: 250px;
+  border-radius: 50px;
+  padding: 10px;
+  border: solid 1px slategrey;
+}
+.search {
+  flex-grow: 1;
+  justify-content: end;
+  display: flex;
+  padding-right: 30px;
+}
+.search button {
+  border: 0;
+  position: absolute;
+  width: 40px;
+  background: #708090;
+  height: 38px;
+  border-radius: 50%;
+}
+button .fa-search {
+  font-size: 17px;
+  color: #fff;
+}

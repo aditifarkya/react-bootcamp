@@ -7,30 +7,13 @@
 .header__logo {
   height: 110px;
 }
-input[type="text"] {
-  width: 300px;
-  border-radius: 50px;
-  padding: 10px;
-  border: solid 1px black;
-}
-.header__search {
-  flex-grow: 1;
-  justify-content: end;
-  display: flex;
-  padding-right: 30px;
-}
-.header__search button {
-  border: 0;
-  position: absolute;
-  width: 50px;
-  background: none;
-  height: 38px;
-}
-button .fa-search {
-  font-size: 17px;
-  color: #9f9898;
-}
+
 .header__icon {
   width: 30px;
   height: 30px;
+}
+.header_img {
+  display: flex;
+  justify-content: end;
+  flex-grow: 1;
 }
