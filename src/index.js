@@ -1,10 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { useState } from "react";
+import SearchComponent from "./components/search-component/index";
 import HeaderComponent from "./components/header-component";
 import CardComponent from "./components/card-component/index.js";
 import teamdata from "./components/card-component/config";
+import "./index.scss";
 
-const CardContainer = () => {
+// Team card component (assignment-4) and search functionality (assignment-5)
+
+const BodyComponent = () => {
+  const [searchfiltertext, setsearchfiltertext] = useState(teamdata);
+  return (
+    <div className="card__body">
+      <h2 style={{ textAlign: "center" }}>
+        Here's our team. <br></br> Meet our Team Members
+      </h2>
+      <SearchComponent setsearchfiltertext={setsearchfiltertext} />
+      <div className="card__containers">
+        <CardContainer searchfiltertext={searchfiltertext} />
+      </div>
+    </div>
+  );
+};
+const CardContainer = ({ searchfiltertext }) => {
   // using for loop to iterate array of team data objects
   // let card = [];
   // for (let i = 0; i < teamdata.length; i++) {
@@ -12,21 +31,16 @@ const CardContainer = () => {
   //   console.log(teamdata[i]);
   //   card.push(<CardComponent teamdata={teamdata[i]} key={teamdata.id} />);
   // }
-  const card = teamdata.map((element) => {
-    return <CardComponent teamdata={element} key={element.id} />;
-  });
-  return card;
-};
-const BodyComponent = () => {
-  return (
-    <div className="card__body">
-      <h2 style={{ textAlign: "center" }}>
-        Here's our team. <br></br> Meet our Team Members
-      </h2>
-      <div className="card__containers">
-        <CardContainer />
-      </div>
-    </div>
+  console.log(searchfiltertext);
+  const searchingresult = () => {
+    return searchfiltertext.map((element) => {
+      return <CardComponent teamdata={element} key={element.id} />;
+    });
+  };
+  return searchfiltertext.length !== 0 ? (
+    searchingresult()
+  ) : (
+    <h1>No search results found</h1>
   );
 };
 // main component to render header component
@@ -41,7 +55,7 @@ const AppComponent = () => {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<AppComponent />);
 
-//create functional nested component
+//create functional nested component  (assignment-3)
 // const name = "Third";
 // const SecondHeadingComponent = () => {
 //   return <h2>Second Heading</h2>;
@@ -56,7 +70,7 @@ root.render(<AppComponent />);
 //   );
 // };
 
-//create nested element using JSX
+//create nested element using JSX  (assignment-3)
 
 // const headerelement = (
 //   <div className="title">
