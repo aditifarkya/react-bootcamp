@@ -1,48 +1,66 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SearchComponent from "./components/search-component/index";
 import HeaderComponent from "./components/header-component";
 import CardComponent from "./components/card-component/index.js";
-import teamdata from "./components/card-component/config";
+import fetchapirequest from "./utils/utils";
 import "./index.scss";
 
-// Team card component (assignment-4) and search functionality (assignment-5)
+// Team card component (assignment-4) and search functionality (assignment-5) and fetch data from github api (assignment-6)
+const fetchapidata = async () => {
+  const userlist = [
+    "gavandivya",
+    "Bhallora",
+    "aditifarkya",
+    "nikitaj-57",
+    "it-abhishek2000",
+    "soumyagangamwar",
+    "shreerajjadeja",
+  ];
+  return fetchapirequest(userlist, "https://api.github.com/users");
+};
+
+const CardContainer = ({ searchlistdata, searchfiltertext }) => {
+  return searchfiltertext === "" ? (
+    <h1>No search data found</h1>
+  ) : (
+    searchlistdata.map((element) => {
+      return <CardComponent data={element} key={element.id} />;
+    })
+  );
+};
 
 const BodyComponent = () => {
-  const [searchfiltertext, setsearchfiltertext] = useState(teamdata);
+  const [initialuserlist, setinitialuserlist] = useState([]);
+  const [searchfiltertext, setsearchfiltertext] = useState([]);
+
+  useEffect(() => {
+    fetchapidata().then((teamdata) => {
+      setinitialuserlist(teamdata);
+    });
+  }, []);
   return (
     <div className="card__body">
       <h2 style={{ textAlign: "center" }}>
         Here's our team. <br></br> Meet our Team Members
       </h2>
-      <SearchComponent setsearchfiltertext={setsearchfiltertext} />
+      <SearchComponent
+        setsearchfiltertext={setsearchfiltertext}
+        initialuserlist={initialuserlist}
+      />
       <div className="card__containers">
-        <CardContainer searchfiltertext={searchfiltertext} />
+        <CardContainer
+          searchlistdata={
+            searchfiltertext?.length !== 0 ? searchfiltertext : initialuserlist
+          }
+          searchfiltertext={searchfiltertext}
+        />
       </div>
     </div>
   );
 };
-const CardContainer = ({ searchfiltertext }) => {
-  // using for loop to iterate array of team data objects
-  // let card = [];
-  // for (let i = 0; i < teamdata.length; i++) {
-  //   console.log(i);
-  //   console.log(teamdata[i]);
-  //   card.push(<CardComponent teamdata={teamdata[i]} key={teamdata.id} />);
-  // }
-  console.log(searchfiltertext);
-  const searchingresult = () => {
-    return searchfiltertext.map((element) => {
-      return <CardComponent teamdata={element} key={element.id} />;
-    });
-  };
-  return searchfiltertext.length !== 0 ? (
-    searchingresult()
-  ) : (
-    <h1>No search results found</h1>
-  );
-};
+
 // main component to render header component
 const AppComponent = () => {
   return (
