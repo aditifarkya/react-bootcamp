@@ -1,65 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { useState, useEffect } from "react";
-import SearchComponent from "./components/search-component/index";
-import HeaderComponent from "./components/header-component";
-import CardComponent from "./components/card-component/index.js";
-import fetchapirequest from "./utils/utils";
+import { HeaderComponent, BodyComponent } from "./components/index";
 import "./index.scss";
-
-// Team card component (assignment-4) and search functionality (assignment-5) and fetch data from github api (assignment-6)
-const fetchapidata = async () => {
-  const userlist = [
-    "gavandivya",
-    "Bhallora",
-    "aditifarkya",
-    "nikitaj-57",
-    "it-abhishek2000",
-    "soumyagangamwar",
-    "shreerajjadeja",
-  ];
-  return fetchapirequest(userlist, "https://api.github.com/users");
-};
-
-const CardContainer = ({ searchlistdata, searchfiltertext }) => {
-  return searchfiltertext === "" ? (
-    <h1>No search data found</h1>
-  ) : (
-    searchlistdata.map((element) => {
-      return <CardComponent data={element} key={element.id} />;
-    })
-  );
-};
-
-const BodyComponent = () => {
-  const [initialuserlist, setinitialuserlist] = useState([]);
-  const [searchfiltertext, setsearchfiltertext] = useState([]);
-
-  useEffect(() => {
-    fetchapidata().then((teamdata) => {
-      setinitialuserlist(teamdata);
-    });
-  }, []);
-  return (
-    <div className="card__body">
-      <h2 style={{ textAlign: "center" }}>
-        Here's our team. <br></br> Meet our Team Members
-      </h2>
-      <SearchComponent
-        setsearchfiltertext={setsearchfiltertext}
-        initialuserlist={initialuserlist}
-      />
-      <div className="card__containers">
-        <CardContainer
-          searchlistdata={
-            searchfiltertext?.length !== 0 ? searchfiltertext : initialuserlist
-          }
-          searchfiltertext={searchfiltertext}
-        />
-      </div>
-    </div>
-  );
-};
 
 // main component to render header component
 const AppComponent = () => {

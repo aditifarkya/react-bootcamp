@@ -1,10 +1,11 @@
 const fetchapirequest = async (userlist, url) => {
-  let teamdata = [];
-  await Promise.all(
+  //   let teamdata = [];
+  let teamdata = await Promise.all(
     userlist.map(async (item) => {
       const response = await fetch(`${url}/${item}`);
       const data = await response.json();
-      teamdata.push(data);
+      //   teamdata.push(data);
+      return data;
     })
   );
   return teamdata;
