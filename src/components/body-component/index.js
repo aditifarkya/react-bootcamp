@@ -13,6 +13,7 @@ const CardContainer = ({ searchlistdata }) => {
 const BodyComponent = () => {
   const [initialuserlist, setinitialuserlist] = useState([]);
   const [searchfiltertext, setsearchfiltertext] = useState([]);
+  const [apierror, setapierror] = useState();
   const fetchapidata = () => {
     const userlist = [
       "gavandivya",
@@ -27,11 +28,20 @@ const BodyComponent = () => {
   };
 
   useEffect(() => {
-    fetchapidata().then((teamdata) => {
-      setinitialuserlist(teamdata);
-    });
+    fetchapidata()
+      .then((teamdata) => {
+        setapierror(false);
+        setinitialuserlist(teamdata);
+      })
+      .catch((err) => {
+        setapierror(true);
+        console.log(err.message);
+      });
   }, []);
-  return (
+
+  return apierror ? (
+    <h2>Could not load the api due to errors</h2>
+  ) : (
     <div className="card__body">
       <h2 style={{ textAlign: "center" }}>
         Here's our team. <br></br> Meet our Team Members
