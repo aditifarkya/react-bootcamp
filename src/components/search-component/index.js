@@ -1,22 +1,37 @@
 import { useState } from "react";
-import teamdata from "./../card-component/config";
+// import teamdata from "./../card-component/config";
 
-const SearchComponent = ({ setsearchfiltertext }) => {
+const SearchComponent = ({ setsearchfiltertext, initialuserlist }) => {
   const [searchval, setsearchval] = useState("");
+
   //function to submit search value
   const submitsearch = (e) => {
     e.preventDefault();
-    setsearchfiltertext(filtersearchdata(searchval));
+    //this check is when search text is blank set the state with initialuserlist
+    !searchval.length ? setsearchfiltertext(initialuserlist) : setfilterdata();
   };
-  // function return arry of filter out data
+
+  /*
+  - function is to set the search filtered result in to state variable
+  - setting "no result" into state to display no data found when there is no match
+   */
+  const setfilterdata = () => {
+    const filterdata = filtersearchdata(searchval);
+    filterdata.length
+      ? setsearchfiltertext(filterdata)
+      : setsearchfiltertext("");
+  };
+
+  // function return array of filter out data
   const filtersearchdata = (searchval) => {
-    return teamdata.filter((search) => {
+    return initialuserlist.filter((search) => {
       return (
-        search.name.toLowerCase().includes(searchval.toLowerCase()) ||
-        search.designation.toLowerCase().includes(searchval.toLowerCase())
+        search?.name?.toLowerCase().includes(searchval.toLowerCase()) ||
+        search?.company?.toLowerCase().includes(searchval.toLowerCase())
       );
     });
   };
+
   return (
     <div>
       <form className="search" onSubmit={submitsearch}>
