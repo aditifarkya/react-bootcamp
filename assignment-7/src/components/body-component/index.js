@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import CardComponent from "../card-component";
 import SearchComponent from "../search-component";
 import fetchapirequest from "../../utils/utils";
@@ -7,7 +8,12 @@ import fetchapirequest from "../../utils/utils";
 
 const CardContainer = ({ searchlistdata }) => {
   return searchlistdata.map((element) => {
-    return <CardComponent data={element} key={element.id} />;
+    console.log(element);
+    return (
+      <Link to={`/user/${element?.login}`}>
+        <CardComponent data={element} key={element.id} />
+      </Link>
+    );
   });
 };
 const BodyComponent = () => {
