@@ -1,7 +1,7 @@
 const fetchapirequest = async (userlist, url) => {
   //   let teamdata = [];
   let teamdata = await Promise.all(
-    userlist.map(async (item) => {
+    userlist?.map(async (item) => {
       const response = await fetch(`${url}/${item}`, {
         headers: {
           Authorization: "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",

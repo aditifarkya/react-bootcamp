@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import {
   HeaderComponent,
   BodyComponent,
@@ -14,29 +14,28 @@ const AppComponent = () => {
   return (
     <>
       <HeaderComponent />
-      <BodyComponent />
+      <Outlet />
     </>
   );
 };
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <AppComponent />,
-//     errorElement: <ErrorComponent />,
-//     children: [
-//       {
-//         path: "search",
-//         element: <BodyComponent />,
-//       },
-//       {
-//         path: "users/:id",
-//         element: <UserComponent />,
-//       },
-//     ],
-//   },
-// ]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppComponent />,
+    errorElement: <ErrorComponent />,
+    children: [
+      {
+        path: "search",
+        element: <BodyComponent />,
+      },
+      {
+        path: "user/:id",
+        element: <UserComponent />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<RouterProvider router={router} />);
-root.render(<AppComponent />);
+root.render(<RouterProvider router={router} />);
