@@ -3,7 +3,6 @@ import HeaderComponent from "./header-component";
 import SearchComponent from "./search-component";
 import BodyComponent from "./body-component";
 import ErrorComponent from "./error-component";
-import UserComponent from "./users-component";
 
 export {
   CardComponent,
@@ -11,5 +10,4 @@ export {
   SearchComponent,
   BodyComponent,
   ErrorComponent,
-  UserComponent,
 };

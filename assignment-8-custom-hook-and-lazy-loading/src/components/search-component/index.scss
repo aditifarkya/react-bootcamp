@@ -1,0 +1,30 @@
+.search__filter {
+  label {
+    display: block;
+  }
+  div {
+    display: inline-block;
+    padding: 20px;
+    > label {
+      margin-bottom: 10px;
+    }
+    select {
+      height: 30px;
+      border: solid 1px black;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .filter__btn {
+    padding: 7px;
+    background-color: #67b799;
+    color: white;
+    border: solid 1px #67b799;
+    border-radius: 50px;
+    width: 70px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,14 +1,16 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import {
   HeaderComponent,
   BodyComponent,
   ErrorComponent,
-  UserComponent,
 } from "./components/index";
 import "./index.scss";
 
+const UserComponent = lazy(() =>
+  import("./components/users-component/index.js")
+);
 // main component to render header component
 const AppComponent = () => {
   return (
@@ -31,7 +33,11 @@ const router = createBrowserRouter([
       },
       {
         path: "user/:id",
-        element: <UserComponent />,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <UserComponent />
+          </Suspense>
+        ),
       },
     ],
   },
