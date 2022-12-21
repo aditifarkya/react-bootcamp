@@ -142,13 +142,34 @@
       this[globalName] = mainExports;
     }
   }
-})({"lX4BT":[function(require,module,exports) {
+})({"1xC6H":[function(require,module,exports) {
+var Refresh = require("react-refresh/runtime");
+var ErrorOverlay = require("react-error-overlay");
+Refresh.injectIntoGlobalHook(window);
+window.$RefreshReg$ = function() {};
+window.$RefreshSig$ = function() {
+    return function(type) {
+        return type;
+    };
+};
+ErrorOverlay.setEditorHandler(function editorHandler(errorLocation) {
+    let file = `${errorLocation.fileName}:${errorLocation.lineNumber || 1}:${errorLocation.colNumber || 1}`;
+    fetch(`/__parcel_launch_editor?file=${encodeURIComponent(file)}`);
+});
+ErrorOverlay.startReportingRuntimeErrors({
+    onError: function() {}
+});
+window.addEventListener("parcelhmraccept", ()=>{
+    ErrorOverlay.dismissRuntimeErrors();
+});
+
+},{"react-refresh/runtime":"786KC","react-error-overlay":"1dldy"}],"gY4fS":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "7055c94b59712999";
+module.bundle.HMR_BUNDLE_ID = "813d9c5637a0bcb0";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -531,8 +552,292 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"4M6V8":[function(require,module,exports) {
+},{}],"gpz5J":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$184f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$184f.prelude(module);
 
-},{}]},["lX4BT","4M6V8"], "4M6V8", "parcelRequire94c2")
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _reactRouter = require("react-router");
+var _react = require("react");
+var _utils = require("../../utils/utils");
+var _utilsDefault = parcelHelpers.interopDefault(_utils);
+var _indexScss = require("./index.scss");
+var _s = $RefreshSig$();
+const UserComponent = ()=>{
+    _s();
+    let name = "";
+    const [userdetail, setuserdetail] = (0, _react.useState)({});
+    const { id  } = (0, _reactRouter.useParams)();
+    (0, _react.useEffect)(()=>{
+        (0, _utilsDefault.default)([
+            id
+        ], "https://api.github.com/users").then((data)=>{
+            setuserdetail(data);
+        }).catch((err)=>{
+            console.log(err);
+        });
+    }, [
+        id
+    ]);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "user__details",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "left_section",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "user__image",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                            src: userdetail[0]?.avatar_url,
+                            alt: "image",
+                            className: "card__img"
+                        }, void 0, false, {
+                            fileName: "src/components/users-component/index.js",
+                            lineNumber: 24,
+                            columnNumber: 11
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/users-component/index.js",
+                        lineNumber: 23,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        className: "user__name",
+                        children: userdetail[0]?.login
+                    }, void 0, false, {
+                        fileName: "src/components/users-component/index.js",
+                        lineNumber: 30,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        style: {
+                            display: "flex"
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "user__follower",
+                                style: {
+                                    marginRight: "20px"
+                                },
+                                children: [
+                                    userdetail[0]?.followers,
+                                    " Followers"
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 32,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "user__follower",
+                                children: [
+                                    userdetail[0]?.following,
+                                    " Following"
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 35,
+                                columnNumber: 11
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/users-component/index.js",
+                        lineNumber: 31,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "user__company",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
+                                className: "fa fa-building-o",
+                                "aria-hidden": "true"
+                            }, void 0, false, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 40,
+                                columnNumber: 11
+                            }, undefined),
+                            userdetail[0]?.company
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/users-component/index.js",
+                        lineNumber: 39,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "user__company",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
+                                className: "fa fa-map-marker",
+                                "aria-hidden": "true"
+                            }, void 0, false, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 44,
+                                columnNumber: 11
+                            }, undefined),
+                            userdetail[0]?.location
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/users-component/index.js",
+                        lineNumber: 43,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/users-component/index.js",
+                lineNumber: 22,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "right_section",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        children: "Overview"
+                    }, void 0, false, {
+                        fileName: "src/components/users-component/index.js",
+                        lineNumber: 49,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "user__block",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                children: [
+                                    "Hey, I'm ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                        children: userdetail[0]?.name
+                                    }, void 0, false, {
+                                        fileName: "src/components/users-component/index.js",
+                                        lineNumber: 52,
+                                        columnNumber: 22
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 51,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                        children: [
+                                            "I'm currently working with",
+                                            " ",
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                                children: userdetail[0]?.company
+                                            }, void 0, false, {
+                                                fileName: "src/components/users-component/index.js",
+                                                lineNumber: 57,
+                                                columnNumber: 15
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/users-component/index.js",
+                                        lineNumber: 55,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                        children: "I'm currently learning React js"
+                                    }, void 0, false, {
+                                        fileName: "src/components/users-component/index.js",
+                                        lineNumber: 59,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                        children: "Ask me about any tech related stuff"
+                                    }, void 0, false, {
+                                        fileName: "src/components/users-component/index.js",
+                                        lineNumber: 60,
+                                        columnNumber: 13
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 54,
+                                columnNumber: 11
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/users-component/index.js",
+                        lineNumber: 50,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "user__techstack",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "HTML5"
+                            }, void 0, false, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 64,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "Javascript"
+                            }, void 0, false, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 65,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "React JS"
+                            }, void 0, false, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 66,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "CSS3"
+                            }, void 0, false, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 67,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "ES 6"
+                            }, void 0, false, {
+                                fileName: "src/components/users-component/index.js",
+                                lineNumber: 68,
+                                columnNumber: 11
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/users-component/index.js",
+                        lineNumber: 63,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/users-component/index.js",
+                lineNumber: 48,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/users-component/index.js",
+        lineNumber: 21,
+        columnNumber: 5
+    }, undefined);
+};
+_s(UserComponent, "MR5lgDJkJxC5ePeHn/adFvxpjy0=", false, function() {
+    return [
+        (0, _reactRouter.useParams)
+    ];
+});
+_c = UserComponent;
+exports.default = UserComponent;
+var _c;
+$RefreshReg$(_c, "UserComponent");
 
-//# sourceMappingURL=FirstAssignment.59712999.js.map
+  $parcel$ReactRefreshHelpers$184f.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react-router":"dbWyW","react":"21dqq","../../utils/utils":"5sJZc","./index.scss":"e2d3T","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"e2d3T":[function() {},{}]},["1xC6H","gY4fS"], null, "parcelRequire0451")
+
+//# sourceMappingURL=users-component.37a0bcb0.js.map
