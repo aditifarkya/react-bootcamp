@@ -42,13 +42,14 @@ const SearchComponent = ({ setsearchfiltertext, initialuserlist }) => {
     setcity(e.target.value);
   };
   const filteruserbycity = (city) => {
+    //logic to replace * at the end of the city
+    city = city.endsWith("*") ? city.slice(0, -1) : city;
     return initialuserlist.filter((search) => {
       return search?.location?.toLowerCase().includes(city.toLowerCase());
     });
   };
   const handleFilter = () => {
     const checkdata = filteruserbycity(city);
-    console.log(checkdata);
     checkdata.length ? setsearchfiltertext(checkdata) : setsearchfiltertext("");
   };
   useEffect(() => {
