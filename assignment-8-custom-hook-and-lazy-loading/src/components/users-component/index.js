@@ -37,11 +37,11 @@ const UserComponent = () => {
           </h3>
         </div>
         <div className="user__company">
-          <i class="fa fa-building-o" aria-hidden="true"></i>
+          <i className="fa fa-building-o" aria-hidden="true"></i>
           {userdetail[0]?.company}
         </div>
         <div className="user__company">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <i className="fa fa-map-marker" aria-hidden="true"></i>
           {userdetail[0]?.location}
         </div>
       </div>

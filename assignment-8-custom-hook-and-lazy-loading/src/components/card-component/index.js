@@ -8,6 +8,7 @@ const CardComponent = (props) => {
     company: designation,
     linkedinurl,
     githuburl,
+    location,
   } = props.data;
   return (
     <div className="card__component">
@@ -18,6 +19,7 @@ const CardComponent = (props) => {
       <div className="card__details">
         <h2>{name}</h2>
         <h5>- {designation}</h5>
+        <h5>- {location}</h5>
       </div>
       <div className="card__url">
         <a href={linkedinurl} target="_blank">

@@ -9,7 +9,7 @@ import fetchapirequest from "../../utils/utils";
 const CardContainer = ({ searchlistdata }) => {
   return searchlistdata.map((element) => {
     return (
-      <Link to={`/user/${element?.login}`}>
+      <Link to={`/user/${element?.login}`} key={element.id}>
         <CardComponent data={element} key={element.id} />
       </Link>
     );
@@ -22,12 +22,13 @@ const BodyComponent = () => {
   const fetchapidata = () => {
     const userlist = [
       "gavandivya",
-      "Bhallora",
+      "ap221882",
+      "shreerajjadeja",
       "aditifarkya",
       "nikitaj-57",
       "it-abhishek2000",
       "soumyagangamwar",
-      "shreerajjadeja",
+      "Bhallora",
     ];
     return fetchapirequest(userlist, "https://api.github.com/users");
   };
