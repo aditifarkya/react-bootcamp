@@ -1,4 +1,5 @@
 {
+  "homepage": "http://aditifarkya.github.io/react-bootcamp",
   "name": "firstassignment",
   "version": "1.0.0",
   "description": "",
@@ -18,15 +19,14 @@
   "bugs": {
     "url": "https://github.com/aditifarkya/react-firstassignment/issues"
   },
-  "homepage": "https://aditifarkya.github.io/react-bootcamp",
   "dependencies": {
-    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.5"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.0",
+    "gh-pages": "^4.0.0",
     "parcel": "^2.8.0",
     "process": "^0.11.10",
     "sass": "^1.56.1"
