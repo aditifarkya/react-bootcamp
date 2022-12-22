@@ -1,12 +1,14 @@
 import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import fetchapirequest from "../../utils/utils";
 import "./index.scss";
+import ThemeContext from "../../context/theme-context";
 
 const UserComponent = () => {
   let name = "";
   const [userdetail, setuserdetail] = useState({});
   const { id } = useParams();
+  const { theme } = useContext(ThemeContext);
   useEffect(() => {
     fetchapirequest([id], "https://api.github.com/users")
       .then((data) => {
@@ -18,7 +20,10 @@ const UserComponent = () => {
   }, [id]);
 
   return (
-    <div className="user__details">
+    <div
+      className="user__details"
+      style={{ backgroundColor: theme === "light" ? "white" : "grey" }}
+    >
       <div className="left_section">
         <div className="user__image">
           <img

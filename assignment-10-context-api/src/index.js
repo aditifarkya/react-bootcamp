@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import {
@@ -6,6 +6,7 @@ import {
   BodyComponent,
   ErrorComponent,
 } from "./components/index";
+import ThemeContext from "./context/theme-context.js";
 import "./index.scss";
 
 const UserComponent = lazy(() =>
@@ -13,35 +14,41 @@ const UserComponent = lazy(() =>
 );
 // main component to render header component
 const AppComponent = () => {
+  const [theme, setTheme] = useState("light");
   return (
-    <>
+    <ThemeContext.Provider value={{ theme: theme, setTheme: setTheme }}>
       <HeaderComponent />
       <Outlet />
-    </>
+    </ThemeContext.Provider>
   );
 };
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <AppComponent />,
+      errorElement: <ErrorComponent />,
+      children: [
+        {
+          path: "search",
+          element: <BodyComponent />,
+        },
+        {
+          path: "user/:id",
+          element: (
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <UserComponent />
+            </Suspense>
+          ),
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <AppComponent />,
-    errorElement: <ErrorComponent />,
-    children: [
-      {
-        path: "search",
-        element: <BodyComponent />,
-      },
-      {
-        path: "user/:id",
-        element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
-            <UserComponent />
-          </Suspense>
-        ),
-      },
-    ],
-  },
-]);
+    basename: "/react-bootcamp",
+  }
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={router} />);

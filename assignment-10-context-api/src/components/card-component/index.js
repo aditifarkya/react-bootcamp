@@ -1,7 +1,10 @@
+import { useContext } from "react";
+import ThemeContext from "../../context/theme-context";
 import "./style.scss";
 
 const CardComponent = (props) => {
   //   const teamdata = props.teamdata;
+  const { theme } = useContext(ThemeContext);
   const {
     avatar_url: img,
     name,
@@ -11,8 +14,16 @@ const CardComponent = (props) => {
     location,
   } = props.data;
   return (
-    <div className="card__component">
-      <div className="card__profileimg">
+    <div
+      className="card__component"
+      style={{ backgroundColor: theme === "light" ? "white" : "black" }}
+    >
+      <div
+        className="card__profileimg"
+        style={{
+          backgroundColor: theme === "light" ? "" : "black",
+        }}
+      >
         <img src={img} alt="image" className="card__img" />
       </div>
 
