@@ -1,0 +1,26 @@
+.header {
+  &_div {
+    display: flex;
+    align-items: center;
+    padding: 0px 30px;
+    border-bottom: solid 1px black;
+  }
+  &__logo {
+    height: 110px;
+  }
+  &__icon {
+    width: 30px;
+    height: 30px;
+  }
+  &__img {
+    display: flex;
+    justify-content: end;
+  }
+  &__link {
+    color: black;
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: end;
+    margin: 0 20px;
+  }
+}
