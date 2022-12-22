@@ -16,15 +16,15 @@
       }
     }
   }
-  .filter__btn {
-    padding: 7px;
-    background-color: #67b799;
-    color: white;
-    border: solid 1px #67b799;
-    border-radius: 50px;
-    width: 70px;
-    &:hover {
-      cursor: pointer;
-    }
+}
+.filter__btn {
+  padding: 7px;
+  background-color: #67b799;
+  color: white;
+  border: solid 1px #67b799;
+  border-radius: 50px;
+  min-width: 70px;
+  &:hover {
+    cursor: pointer;
   }
 }

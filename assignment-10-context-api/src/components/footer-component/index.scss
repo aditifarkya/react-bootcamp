@@ -1,0 +1,16 @@
+.footer {
+  border-top: solid 1px black;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  img {
+    width: 30px;
+    margin-right: 10px;
+  }
+  &__socialicons img {
+    width: 50px;
+  }
+  &__contactus a {
+    display: block;
+  }
+}

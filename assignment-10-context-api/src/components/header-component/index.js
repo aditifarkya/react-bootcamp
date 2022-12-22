@@ -13,17 +13,23 @@ const HeaderComponent = () => {
       className="header_div"
       style={{ backgroundColor: theme === "light" ? "white" : "grey" }}
     >
-      <img alt="Logo" src={logo} className="header__logo" />
-      <hr
-        style={{ height: "100px", marginLeft: "20px", marginRight: "20px" }}
-      />
-      <Link to={"/"}>
-        <h1 style={{ color: "deeppink" }}>Brainly Fools</h1>
-      </Link>
-
-      <Link to={"/search"} className="header__link">
-        Search
-      </Link>
+      <div className="header__teamlogo">
+        <img alt="Logo" src={logo} className="header__logo" />
+        <hr
+          style={{ height: "100px", marginLeft: "20px", marginRight: "20px" }}
+        />
+        <Link to={"/"}>
+          <h1 style={{ color: "deeppink" }}>Brainly Fools</h1>
+        </Link>
+      </div>
+      <div>
+        <Link to={"/search"} className="header__link">
+          Search
+        </Link>
+        <Link to={"/aboutus"} className="header__link">
+          About US
+        </Link>
+      </div>
       <div className="toggle-button-cover">
         <div className="button-cover">
           <div className="button b2" id="theme-button">
