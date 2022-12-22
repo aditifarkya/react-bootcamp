@@ -1,0 +1,1 @@
+{"mappings":"AACE","sources":["src/components/aboutus-component/index.scss"],"sourcesContent":[".aboutus {\r\n  input {\r\n    height: 30px;\r\n    margin-right: 20px;\r\n  }\r\n}\r\n"],"names":[],"version":3,"file":"aboutus-component.af249b73.css.map","sourceRoot":"/__parcel_source_root/"}
