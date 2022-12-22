@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import ThemeContext from "../../context/theme-context";
 import UserContext from "../../context/user-context";
+import "./index.scss";
 
 const AboutUsComponent = () => {
   const [aboutusemail, setaboutusemail] = useState("");
+  const { theme } = useContext(ThemeContext);
   return (
     <UserContext.Consumer>
       {({ email, setemail }) => {
         return (
-          <div style={{ flex: "1" }}>
-            <p>Email:{email}</p>
+          <div
+            className="aboutus"
+            style={{
+              flex: "1",
+              padding: "20px",
+              backgroundColor: theme === "light" ? "white" : "grey",
+            }}
+          >
+            <p>
+              Email: <strong>{email}</strong>
+            </p>
             <input
               value={aboutusemail}
               onChange={(e) => {
@@ -21,7 +33,7 @@ const AboutUsComponent = () => {
                 setemail(aboutusemail);
               }}
             >
-              update email
+              Update email
             </button>
           </div>
         );

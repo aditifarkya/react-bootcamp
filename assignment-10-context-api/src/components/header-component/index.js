@@ -11,7 +11,7 @@ const HeaderComponent = () => {
   return (
     <div
       className="header_div"
-      style={{ backgroundColor: theme === "light" ? "white" : "grey" }}
+      style={{ backgroundColor: theme === "light" ? "#d8f5e8" : "grey" }}
     >
       <div className="header__teamlogo">
         <img alt="Logo" src={logo} className="header__logo" />

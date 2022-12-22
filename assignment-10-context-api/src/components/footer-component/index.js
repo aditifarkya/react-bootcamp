@@ -13,17 +13,17 @@ const FooterComponent = () => {
   return (
     <div
       className="footer"
-      style={{ backgroundColor: theme === "light" ? "white" : "grey" }}
+      style={{ backgroundColor: theme === "light" ? "#d8f5e8" : "grey" }}
     >
       <div>
         <div className="footer__socialicons">
-          <a href="#" target="_blank">
+          <a href="#">
             <img src={facebook} alt="Fb" />
           </a>
-          <a href="#" target="_blank">
+          <a href="#">
             <img src={twitter} alt="twitter" />
           </a>
-          <a href="#" target="_blank">
+          <a href="#">
             <img src={instagram} alt="instagram" />
           </a>
         </div>

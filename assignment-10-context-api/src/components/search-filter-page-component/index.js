@@ -24,13 +24,13 @@ const SearchFilterPageComponent = () => {
   const fetchapidata = () => {
     const userlist = [
       "gavandivya",
-      // "ap221882",
-      // "shreerajjadeja",
-      // "aditifarkya",
-      // "nikitaj-57",
-      // "it-abhishek2000",
-      // "soumyagangamwar",
-      // "Bhallora",
+      "ap221882",
+      "shreerajjadeja",
+      "aditifarkya",
+      "nikitaj-57",
+      "it-abhishek2000",
+      "soumyagangamwar",
+      "Bhallora",
     ];
     return fetchapirequest(userlist, "https://api.github.com/users");
   };
