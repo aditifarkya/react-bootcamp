@@ -16,6 +16,7 @@ const fetchapirequest = async (userlist, url) => {
       return data;
     })
   );
+  console.log(teamdata);
   return teamdata;
 };
 export default fetchapirequest;

@@ -4,6 +4,11 @@
     align-items: center;
     padding: 0px 30px;
     border-bottom: solid 1px black;
+    justify-content: space-between;
+  }
+  &__teamlogo {
+    display: flex;
+    align-items: center;
   }
   &__logo {
     height: 110px;
@@ -23,4 +28,91 @@
     text-align: end;
     margin: 0 20px;
   }
+}
+
+/* toggle css */
+
+.button {
+  border: solid 2px black;
+  border-radius: 30px;
+  position: relative;
+  top: 50%;
+  width: 74px;
+  height: 36px;
+  margin: -20px auto 0 auto;
+  overflow: hidden;
+}
+
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  z-index: 3;
+}
+
+.knobs {
+  z-index: 2;
+}
+
+.layer {
+  width: 100%;
+  background-color: #ebf7fc;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+#theme-button .knobs:before,
+#theme-button .knobs:after,
+#theme-button .knobs span {
+  position: absolute;
+  top: 4px;
+  width: 20px;
+  height: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  border-radius: 2px;
+  transition: 0.3s ease all;
+  border-radius: 30px;
+}
+
+#theme-button .knobs:before,
+#theme-button .knobs:after {
+  color: #4e4e4e;
+  z-index: 1;
+}
+
+#theme-button .knobs:before {
+  content: "Dark";
+  left: 4px;
+}
+
+#theme-button .knobs:after {
+  content: "Light";
+  right: 4px;
+}
+
+#theme-button .knobs span {
+  width: 25px;
+  left: 37px;
+  background-color: #67b799;
+  z-index: 2;
+  color: white;
+}
+
+#theme-button .checkbox:checked + .knobs span {
+  left: 4px;
+  background-color: #67b799;
+}
+
+#theme-button .checkbox:checked ~ .layer {
+  background-color: #fcebeb;
+}
+.toggle-button-cover {
+  display: flex;
 }

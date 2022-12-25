@@ -4,6 +4,12 @@ body {
     text-decoration: none;
   }
 }
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
 .rootele {
   color: red;
 }
@@ -19,7 +25,8 @@ body {
     padding: 20px 100px;
   }
   &__body h2 {
-    padding-top: 10px;
+    padding-top: 40px;
+    margin-top: 0px;
     // color: darkslategrey;
   }
 }
