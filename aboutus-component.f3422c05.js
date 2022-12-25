@@ -644,6 +644,6 @@ $RefreshReg$(_c, "AboutUsComponent");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../context/user-context":"1FbKv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../context/theme-context":"7W1jC","./index.scss":"1X7zr"}],"1X7zr":[function() {},{}]},["1xC6H","elBYb"], null, "parcelRequire0451")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../context/theme-context":"7W1jC","../../context/user-context":"1FbKv","./index.scss":"1X7zr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"1X7zr":[function() {},{}]},["1xC6H","elBYb"], null, "parcelRequire0451")
 
 //# sourceMappingURL=aboutus-component.f3422c05.js.map

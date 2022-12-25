@@ -163,13 +163,13 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"react-refresh/runtime":"786KC","react-error-overlay":"1dldy"}],"gY4fS":[function(require,module,exports) {
+},{"react-refresh/runtime":"786KC","react-error-overlay":"1dldy"}],"7xrj4":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "813d9c5637a0bcb0";
+module.bundle.HMR_BUNDLE_ID = "ca875d8e350b3362";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -552,322 +552,202 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"gpz5J":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$184f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{}],"fzkH9":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$aa8d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$184f.prelude(module);
+$parcel$ReactRefreshHelpers$aa8d.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _reactRouter = require("react-router");
 var _react = require("react");
-var _utils = require("../../utils/utils");
-var _utilsDefault = parcelHelpers.interopDefault(_utils);
+var _reactRedux = require("react-redux");
+var _reactRouterDom = require("react-router-dom");
+var _slice = require("../../features/slice");
 var _indexScss = require("./index.scss");
-var _themeContext = require("../../context/theme-context");
-var _themeContextDefault = parcelHelpers.interopDefault(_themeContext);
 var _s = $RefreshSig$();
-const UserComponent = ()=>{
+const LoginComponent = ()=>{
     _s();
-    let name = "";
-    const [userdetail, setuserdetail] = (0, _react.useState)({});
-    const { id  } = (0, _reactRouter.useParams)();
-    const { theme  } = (0, _react.useContext)((0, _themeContextDefault.default));
-    (0, _react.useEffect)(()=>{
-        (0, _utilsDefault.default)([
-            id
-        ], "https://api.github.com/users").then((data)=>{
-            setuserdetail(data);
-        }).catch((err)=>{
-            console.log(err);
-        });
-    }, [
-        id
-    ]);
+    const { username  } = (0, _reactRedux.useSelector)((store)=>store.user.value) || "";
+    const navigate = (0, _reactRouterDom.useNavigate)();
+    const [Username, setUsername] = (0, _react.useState)("");
+    const [Useremail, setUseremail] = (0, _react.useState)("");
+    const [Userpassword, setUserpassword] = (0, _react.useState)("");
+    const [error, setError] = (0, _react.useState)("");
+    const dispatch = (0, _reactRedux.useDispatch)();
+    const validateForm = ()=>{
+        if (!Username) {
+            setError("Please enter Username.");
+            return false;
+        }
+        if (!Useremail) {
+            setError("Please enter an email address.");
+            return false;
+        }
+        if (!Userpassword) {
+            setError("Please enter a password.");
+            return false;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(Useremail)) {
+            setError("Please enter a valid email address.");
+            return false;
+        }
+        if (Userpassword.length < 8) {
+            setError("Password must be at least 8 characters long.");
+            return false;
+        }
+        return true;
+    };
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        if (validateForm()) {
+            dispatch((0, _slice.Login)({
+                username: Username
+            }));
+            navigate("/");
+        }
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "user__details",
-        style: {
-            backgroundColor: theme === "light" ? "white" : "grey"
-        },
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "left_section",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "user__image",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                            src: userdetail[0]?.avatar_url,
-                            alt: "image",
-                            className: "card__img"
+        className: "login__box",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "login__container",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "drop",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "content",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                            className: "animate__heartBeat",
+                            children: "LogIn"
                         }, void 0, false, {
-                            fileName: "src/components/users-component/index.js",
-                            lineNumber: 29,
-                            columnNumber: 11
-                        }, undefined)
-                    }, void 0, false, {
-                        fileName: "src/components/users-component/index.js",
-                        lineNumber: 28,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                        className: "user__name",
-                        children: userdetail[0]?.login
-                    }, void 0, false, {
-                        fileName: "src/components/users-component/index.js",
-                        lineNumber: 35,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        style: {
-                            display: "flex"
-                        },
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                className: "user__follower",
-                                style: {
-                                    marginRight: "20px"
-                                },
-                                children: [
-                                    userdetail[0]?.followers,
-                                    " Followers"
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 37,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                className: "user__follower",
-                                children: [
-                                    userdetail[0]?.following,
-                                    " Following"
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 40,
-                                columnNumber: 11
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/users-component/index.js",
-                        lineNumber: 36,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "user__company",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
-                                className: "fa fa-building-o",
-                                "aria-hidden": "true"
-                            }, void 0, false, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 45,
-                                columnNumber: 11
-                            }, undefined),
-                            userdetail[0]?.company
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/users-component/index.js",
-                        lineNumber: 44,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "user__company",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
-                                className: "fa fa-map-marker",
-                                "aria-hidden": "true"
-                            }, void 0, false, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 49,
-                                columnNumber: 11
-                            }, undefined),
-                            userdetail[0]?.location
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/users-component/index.js",
-                        lineNumber: 48,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/users-component/index.js",
-                lineNumber: 27,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "right_section",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        children: "Overview"
-                    }, void 0, false, {
-                        fileName: "src/components/users-component/index.js",
-                        lineNumber: 54,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "user__block",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                children: [
-                                    "Hey, I'm ",
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                        children: userdetail[0]?.name
+                            fileName: "src/components/login-component/index.js",
+                            lineNumber: 53,
+                            columnNumber: 13
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                            onSubmit: handleSubmit,
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "input-box",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        id: "user-id",
+                                        placeholder: "Enter Username",
+                                        value: Username,
+                                        onChange: (e)=>setUsername(e.target.value)
                                     }, void 0, false, {
-                                        fileName: "src/components/users-component/index.js",
-                                        lineNumber: 57,
-                                        columnNumber: 22
+                                        fileName: "src/components/login-component/index.js",
+                                        lineNumber: 56,
+                                        columnNumber: 17
                                     }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 56,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                        children: [
-                                            "I'm currently working with",
-                                            " ",
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                                children: userdetail[0]?.company
-                                            }, void 0, false, {
-                                                fileName: "src/components/users-component/index.js",
-                                                lineNumber: 62,
-                                                columnNumber: 15
-                                            }, undefined)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/users-component/index.js",
-                                        lineNumber: 60,
-                                        columnNumber: 13
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                        children: "I'm currently learning React js"
+                                }, void 0, false, {
+                                    fileName: "src/components/login-component/index.js",
+                                    lineNumber: 55,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "input-box",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        id: "user-email",
+                                        placeholder: "Enter Email",
+                                        value: Useremail,
+                                        onChange: (e)=>setUseremail(e.target.value)
                                     }, void 0, false, {
-                                        fileName: "src/components/users-component/index.js",
+                                        fileName: "src/components/login-component/index.js",
                                         lineNumber: 64,
-                                        columnNumber: 13
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                        children: "Ask me about any tech related stuff"
-                                    }, void 0, false, {
-                                        fileName: "src/components/users-component/index.js",
-                                        lineNumber: 65,
-                                        columnNumber: 13
+                                        columnNumber: 17
                                     }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 59,
-                                columnNumber: 11
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/users-component/index.js",
-                        lineNumber: 55,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "user__techstack",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                children: "HTML5"
-                            }, void 0, false, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 69,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                children: "Javascript"
-                            }, void 0, false, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 70,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                children: "React JS"
-                            }, void 0, false, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 71,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                children: "CSS3"
-                            }, void 0, false, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 72,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                children: "ES 6"
-                            }, void 0, false, {
-                                fileName: "src/components/users-component/index.js",
-                                lineNumber: 73,
-                                columnNumber: 11
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/users-component/index.js",
-                        lineNumber: 68,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/users-component/index.js",
-                lineNumber: 53,
-                columnNumber: 7
+                                }, void 0, false, {
+                                    fileName: "src/components/login-component/index.js",
+                                    lineNumber: 63,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "input-box",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        id: "user-password",
+                                        placeholder: "Enter Password",
+                                        value: Userpassword,
+                                        onChange: (e)=>setUserpassword(e.target.value)
+                                    }, void 0, false, {
+                                        fileName: "src/components/login-component/index.js",
+                                        lineNumber: 72,
+                                        columnNumber: 17
+                                    }, undefined)
+                                }, void 0, false, {
+                                    fileName: "src/components/login-component/index.js",
+                                    lineNumber: 71,
+                                    columnNumber: 15
+                                }, undefined),
+                                error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    className: "error",
+                                    children: error
+                                }, void 0, false, {
+                                    fileName: "src/components/login-component/index.js",
+                                    lineNumber: 79,
+                                    columnNumber: 25
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "input-box",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                        type: "submit",
+                                        children: "Submit"
+                                    }, void 0, false, {
+                                        fileName: "src/components/login-component/index.js",
+                                        lineNumber: 81,
+                                        columnNumber: 17
+                                    }, undefined)
+                                }, void 0, false, {
+                                    fileName: "src/components/login-component/index.js",
+                                    lineNumber: 80,
+                                    columnNumber: 15
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/login-component/index.js",
+                            lineNumber: 54,
+                            columnNumber: 13
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/login-component/index.js",
+                    lineNumber: 52,
+                    columnNumber: 11
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/login-component/index.js",
+                lineNumber: 51,
+                columnNumber: 9
             }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/components/users-component/index.js",
-        lineNumber: 23,
+        }, void 0, false, {
+            fileName: "src/components/login-component/index.js",
+            lineNumber: 50,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/login-component/index.js",
+        lineNumber: 49,
         columnNumber: 5
     }, undefined);
 };
-_s(UserComponent, "jfjnBKar9ibagkJATRYD5ZvmT3o=", false, function() {
+_s(LoginComponent, "53CMnl+y5pGZzZpvWmRXp3KjGDc=", false, function() {
     return [
-        (0, _reactRouter.useParams)
+        (0, _reactRedux.useSelector),
+        (0, _reactRouterDom.useNavigate),
+        (0, _reactRedux.useDispatch)
     ];
 });
-_c = UserComponent;
-exports.default = UserComponent;
+_c = LoginComponent;
+exports.default = LoginComponent;
 var _c;
-$RefreshReg$(_c, "UserComponent");
+$RefreshReg$(_c, "LoginComponent");
 
-  $parcel$ReactRefreshHelpers$184f.postlude(module);
+  $parcel$ReactRefreshHelpers$aa8d.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-router":"dbWyW","react":"21dqq","../../utils/utils":"5sJZc","./index.scss":"e2d3T","../../context/theme-context":"7W1jC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"5sJZc":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const fetchapirequest = async (userlist, url)=>{
-    //   let teamdata = [];
-    let teamdata = await Promise.all(userlist?.map(async (item)=>{
-        const response = await fetch(`${url}/${item}`, {
-            headers: {
-                Authorization: "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"
-            }
-        });
-        if (!response.ok) {
-            const message = `An error has occured: ${response.status}`;
-            throw new Error(message);
-        }
-        const data = await response.json();
-        //   teamdata.push(data);
-        return data;
-    }));
-    console.log(teamdata);
-    return teamdata;
-};
-exports.default = fetchapirequest;
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./index.scss":"6GaHU","react-router-dom":"9xmpe","react":"21dqq","react-redux":"bdVon","../../features/slice":"gEwWG"}],"6GaHU":[function() {},{}]},["1xC6H","7xrj4"], null, "parcelRequire0451")
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e2d3T":[function() {},{}]},["1xC6H","gY4fS"], null, "parcelRequire0451")
-
-//# sourceMappingURL=users-component.37a0bcb0.js.map
+//# sourceMappingURL=login-component.350b3362.js.map

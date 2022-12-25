@@ -56,6 +56,14 @@
   margin: 10px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.show__flex {
+  display: flex;
+}
+
 body {
   font-family: sans-serif;
 }
@@ -200,12 +208,10 @@ input[type="text"] {
 }
 
 .header__img {
-  justify-content: end;
-  display: flex;
+  margin-right: 40px;
 }
 
 .header__link {
-  color: #000;
   text-align: end;
   flex-grow: 1;
   margin: 0 20px;
@@ -255,7 +261,7 @@ input[type="text"] {
   line-height: 1;
   transition: all .3s;
   position: absolute;
-  top: 4px;
+  top: 2px;
 }
 
 #theme-button .knobs:before, #theme-button .knobs:after {
@@ -274,9 +280,10 @@ input[type="text"] {
 }
 
 #theme-button .knobs span {
-  width: 25px;
+  width: 31px;
   z-index: 2;
   color: #fff;
+  height: 28px;
   background-color: #67b799;
   left: 37px;
 }
