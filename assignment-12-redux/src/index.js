@@ -9,6 +9,8 @@ import {
 } from "./components/index";
 import ThemeContext from "./context/theme-context";
 import UserContext from "./context/user-context.js";
+import { Provider } from "react-redux";
+import store from "./store/store";
 import "./index.scss";
 
 const UserComponent = lazy(() =>
@@ -18,18 +20,23 @@ const AboutUsComponent = lazy(() => import("./components/aboutus-component"));
 const SearchFilterPageComponent = lazy(() =>
   import("./components/search-filter-page-Component")
 );
+const LoginComponent = lazy(() => {
+  return import("./components/login-component");
+});
 // main component to render header component
 const AppComponent = () => {
   const [theme, setTheme] = useState("light");
   const [email, setemail] = useState("abc@gmail.com");
   return (
-    <ThemeContext.Provider value={{ theme: theme, setTheme: setTheme }}>
-      <HeaderComponent />
-      <UserContext.Provider value={{ email: email, setemail: setemail }}>
-        <Outlet />
-        <FooterComponent />
-      </UserContext.Provider>
-    </ThemeContext.Provider>
+    <Provider store={store}>
+      <ThemeContext.Provider value={{ theme: theme, setTheme: setTheme }}>
+        <HeaderComponent />
+        <UserContext.Provider value={{ email: email, setemail: setemail }}>
+          <Outlet />
+          <FooterComponent />
+        </UserContext.Provider>
+      </ThemeContext.Provider>
+    </Provider>
   );
 };
 
@@ -69,6 +76,16 @@ const router = createBrowserRouter(
           ),
         },
       ],
+    },
+    {
+      path: "/login",
+      element: (
+        <Suspense fallback={<h1>Loading .....</h1>}>
+          <Provider store={store}>
+            <LoginComponent />
+          </Provider>
+        </Suspense>
+      ),
     },
   ],
   {
